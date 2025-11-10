@@ -8,4 +8,4 @@ const embedding = await openai.embeddings.create({
   encoding_format: "float",
 });
 
-console.log(embedding.data[0].embedding.length);
+console.log(embedding);
