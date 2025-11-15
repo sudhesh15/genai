@@ -24,7 +24,7 @@ const codingAgent = new Agent({
   instructions: 'You are a coding assistant. Help users with coding questions and problems.',
 });
 
-const gatewayAgent = new Agent({
+const gatewayAgent = Agent.create({
   name: 'gateway_agent',
   instructions: `You are a gateway agent that routes user queries to the appropriate specialized agent.`,
   handoffs: [codingAgent, cookingAgent],
