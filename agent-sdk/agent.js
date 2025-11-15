@@ -18,10 +18,22 @@ const cookingAgent = new Agent({
   instructions: 'You are a cooking assistant. Help users with cooking recipes and tips.',
 });
 
+const codingAgent = new Agent({
+  name: 'coding_agent',
+  model: 'gpt-4.1-mini',
+  instructions: 'You are a coding assistant. Help users with coding questions and problems.',
+});
+
+const gatewayAgent = new Agent({
+  name: 'gateway_agent',
+  instructions: `You are a gateway agent that routes user queries to the appropriate specialized agent.`,
+  handoffs: [codingAgent, cookingAgent],
+});
+
 async function main(query) {
-  const response = await run(cookingAgent, query);
+  const response = await run(gatewayAgent, query);
   console.log('History', response.history);
   console.log(response.finalOutput);
 }
 
-main("Depending on the current time, suggest me a good recipe.").catch(err => console.error('Error running agent:', err));
+main("How to prepare masala chai").catch(err => console.error('Error running agent:', err));
