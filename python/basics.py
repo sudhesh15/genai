@@ -907,3 +907,9 @@ print(x) #returns 300
 #Lamda - A lambda function is a small anonymous function.
 x = lambda a : a + 10
 print(x(5)) #returns 15
+
+#isinstance() Function
+x = 200
+print(isinstance(x, int)) #returns True
+y = "Hello"
+print(isinstance(y, int)) #returns False
